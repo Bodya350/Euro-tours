@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
-  <title>Экскурсии по Европе</title>
+  <title data-i18n="meta_title">Екскурсії Європою</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800" rel="stylesheet" />
@@ -20,27 +20,32 @@
           <span class="brand__name">Europe Tours</span>
         </a>
 
-        <nav class="header__menu menu" aria-label="Главное меню">
+        <nav class="header__menu menu" aria-label="Головне меню">
           <ul class="menu__list">
-            <li class="menu__item"><a href="#about" class="menu__link">О нас</a></li>
-            <li class="menu__item"><a href="#tours" class="menu__link">Экскурсии</a></li>
-            <li class="menu__item"><a href="#contacts" class="menu__link">Контакты</a></li>
+            <li class="menu__item"><a href="#about" class="menu__link" data-i18n="nav_about">Про нас</a></li>
+            <li class="menu__item"><a href="#tours" class="menu__link" data-i18n="nav_tours">Екскурсії</a></li>
+            <li class="menu__item"><a href="#contacts" class="menu__link" data-i18n="nav_contacts">Контакти</a></li>
           </ul>
         </nav>
 
         <div class="header__right">
           <a class="header__number" href="tel:+31201112233">+31 (0)20 111 22 33</a>
-          <a class="header__button" href="#contacts">Оставить заявку</a>
+          <a class="header__button" href="#contacts" data-i18n="cta_leave_request">Залишити заявку</a>
+
+          <!-- Language switch -->
+          <div class="lang-switch" role="group" aria-label="Language switch">
+            <button class="lang-switch__btn" type="button" data-lang="uk" aria-pressed="true">UA</button>
+            <button class="lang-switch__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+          </div>
 
           <!-- кликабельные соцсети -->
-          <div class="header__social" aria-label="Социальные сети">
+          <div class="header__social" aria-label="Соціальні мережі">
             <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social__btn">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4a6 6 0 1 1 0 12a6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8zm6.5-.9a1.1 1.1 0 1 1 0 2.2a1.1 1.1 0 0 1 0-2.2z"/>
               </svg>
             </a>
 
-            <!-- Viber -->
             <a href="viber://chat?number=%2B31201112233" aria-label="Viber" class="social__btn">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M20.6 3.9C18.8 2.2 15.9 1.5 12 1.5S5.2 2.2 3.4 3.9C1.8 5.4 1.4 7.5 1.4 9.8v3.7c0 2.3.4 4.4 2 5.9 1.2 1.1 3 1.7 5.3 2l-.3 2.1c-.1.6.6 1 1.1.6l2.9-2.5c.3 0 .7 0 1.1 0 3.9 0 6.8-.7 8.6-2.4 1.6-1.5 2-3.6 2-5.9V9.8c0-2.3-.4-4.4-2-5.9zM8.4 7.5c.3-.3.9-.2 1.2.1l.8 1c.2.3.2.7 0 1l-.4.5c-.2.3-.2.7 0 1 1 1.7 2.4 3 4.1 4.1.3.2.7.2 1 0l.5-.4c.3-.2.7-.2 1 0l1 .8c.3.3.4.8.1 1.2l-.6.7c-.6.8-1.7 1.1-2.6.7-4.1-1.8-7.4-5.1-9.2-9.2-.4-.9-.1-2 .7-2.6l.7-.6z"/>
@@ -57,7 +62,7 @@
           </div>
 
           <!-- Burger button -->
-          <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <button class="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" data-i18n-aria="burger_label">
             <span></span><span></span><span></span>
           </button>
         </div>
@@ -65,15 +70,23 @@
 
       <!-- Mobile Drawer -->
       <div class="drawer" aria-hidden="true">
-        <nav class="drawer__nav" aria-label="Меню мобильной версии">
-          <a class="drawer__link" href="#about">О нас</a>
-          <a class="drawer__link" href="#tours">Экскурсии</a>
-          <a class="drawer__link" href="#contacts">Контакты</a>
+        <nav class="drawer__nav" aria-label="Мобільне меню">
+          <a class="drawer__link" href="#about" data-i18n="nav_about">Про нас</a>
+          <a class="drawer__link" href="#tours" data-i18n="nav_tours">Екскурсії</a>
+          <a class="drawer__link" href="#contacts" data-i18n="nav_contacts">Контакти</a>
 
           <div class="drawer__sep"></div>
 
           <a class="drawer__link drawer__link--phone" href="tel:+31201112233">+31 (0)20 111 22 33</a>
-          <a class="drawer__cta" href="#contacts">Оставить заявку</a>
+          <a class="drawer__cta" href="#contacts" data-i18n="cta_leave_request">Залишити заявку</a>
+
+          <div class="drawer__sep"></div>
+
+          <!-- Language switch inside drawer -->
+          <div class="drawer__lang lang-switch" role="group" aria-label="Language switch (mobile)">
+            <button class="lang-switch__btn" type="button" data-lang="uk" aria-pressed="true">UA</button>
+            <button class="lang-switch__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+          </div>
 
           <div class="drawer__sep"></div>
 
@@ -92,14 +105,14 @@
         </div>
 
         <div class="hero__content -container">
-          <div class="hero__kicker">Авторские экскурсии по городам Европы</div>
+          <div class="hero__kicker" data-i18n="hero_kicker">Авторські екскурсії містами Європи</div>
           <h1 class="hero__title">Europe Tours</h1>
-          <p class="hero__text">
-            Малые группы, локальные места и маршруты без клише. Подберём экскурсию под ваши интересы.
+          <p class="hero__text" data-i18n="hero_text">
+            Невеликі групи, локальні місця та маршрути без кліше. Підберемо екскурсію під ваші інтереси.
           </p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#tours">Выбрать экскурсию</a>
-            <a class="btn btn--ghost" href="#contacts">Оставить заявку</a>
+            <a class="btn btn--primary" href="#tours" data-i18n="hero_btn_choose">Обрати екскурсію</a>
+            <a class="btn btn--ghost" href="#contacts" data-i18n="cta_leave_request">Залишити заявку</a>
           </div>
         </div>
       </section>
@@ -110,26 +123,22 @@
           <div class="service__content">
             <div class="service__image">
               <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1400&q=80" alt="Europe street">
-              
-
-
             </div>
             <div class="service__image">
-                <img src="https://images.unsplash.com/photo-1471623432079-b009d30b6729?auto=format&fit=crop&w=1400&q=80" alt="Europe street">
-            
+              <img src="https://images.unsplash.com/photo-1471623432079-b009d30b6729?auto=format&fit=crop&w=1400&q=80" alt="Europe street">
             </div>
 
             <div class="service__text">
-              <span>о нас</span>
-              <h3 class="service__title">Экскурсии, которые запоминаются</h3>
-              <p class="service__motivation">
-                Мы показываем города “живыми”: улочки, легенды, гастро-точки и атмосферные виды.
+              <span data-i18n="about_label">про нас</span>
+              <h3 class="service__title" data-i18n="about_title">Екскурсії, які запам’ятовуються</h3>
+              <p class="service__motivation" data-i18n="about_motivation">
+                Ми показуємо міста “живими”: вулички, легенди, гастро-точки й атмосферні краєвиди.
               </p>
-              <p class="service__slogan">
-                Выбирайте тему: история, архитектура, гастрономия, прогулки на закате.
-                Индивидуально или мини-группа.
+              <p class="service__slogan" data-i18n="about_slogan">
+                Обирайте тему: історія, архітектура, гастрономія, прогулянки на заході сонця.
+                Індивідуально або міні-група.
               </p>
-              <a class="btn btn--outline" href="#tours">Выбрать экскурсию</a>
+              <a class="btn btn--outline" href="#tours" data-i18n="hero_btn_choose">Обрати екскурсію</a>
             </div>
           </div>
         </div>
@@ -138,34 +147,34 @@
       <!-- TOURS -->
       <section id="tours" class="price">
         <div class="price-block -container">
-          <p class="price-block__word">Выберите город — подберём маршрут и время</p>
-          <h3 class="price-block__title">Популярные экскурсии и цены</h3>
+          <p class="price-block__word" data-i18n="tours_subtitle">Оберіть місто — ми підберемо маршрут і час</p>
+          <h3 class="price-block__title" data-i18n="tours_title">Популярні екскурсії та ціни</h3>
 
           <div class="price-block__content">
             <div class="price-block__value">
-              <p>Амстердам: каналы и старый город <span>от 35€</span></p>
-              <p>Париж: Монмартр и дворики <span>от 75€</span></p>
-              <p>Прага: легенды и панорамы <span>от 60€</span></p>
-              <p>Рим: античность и скрытые места <span>от 55€</span></p>
+              <p data-i18n="tour_ams">Амстердам: канали та старе місто <span>від 35€</span></p>
+              <p data-i18n="tour_paris">Париж: Монмартр і дворики <span>від 75€</span></p>
+              <p data-i18n="tour_prague">Прага: легенди та панорами <span>від 60€</span></p>
+              <p data-i18n="tour_rome">Рим: античність і приховані місця <span>від 55€</span></p>
             </div>
 
             <div class="price-block__value">
-              <p>Барселона: Гауди + гастро <span>от 60€</span></p>
-              <p>Вена: дворцы и кофе <span>от 40€</span></p>
-              <p>Брюгге: средневековый маршрут <span>от 35€</span></p>
-              <p>Берлин: история XX века <span>от 45€</span></p>
+              <p data-i18n="tour_bcn">Барселона: Гауді + гастро <span>від 60€</span></p>
+              <p data-i18n="tour_vienna">Відень: палаци та кава <span>від 40€</span></p>
+              <p data-i18n="tour_bruges">Брюгге: середньовічний маршрут <span>від 35€</span></p>
+              <p data-i18n="tour_berlin">Берлін: історія ХХ століття <span>від 45€</span></p>
             </div>
-            
+
             <div class="price-block__value">
-              <p>Швейцария: Гауди + гастро <span>от 90€</span></p>
-              <p>Люксембург: дворцы и кофе <span>от 50€</span></p>
-              <p>Брюссель: средневековый маршрут <span>от 35€</span></p>
-              <p>Кельн: история XX века <span>от 45€</span></p>
+              <p data-i18n="tour_swiss">Швейцарія: гори та озера <span>від 90€</span></p>
+              <p data-i18n="tour_lux">Люксембург: палаци та кава <span>від 50€</span></p>
+              <p data-i18n="tour_bxl">Брюссель: середньовічний маршрут <span>від 35€</span></p>
+              <p data-i18n="tour_cologne">Кельн: історія ХХ століття <span>від 45€</span></p>
             </div>
           </div>
 
           <div class="price-block__button">
-            <a class="btn btn--primary" href="#contacts">Подобрать экскурсию</a>
+            <a class="btn btn--primary" href="#contacts" data-i18n="tours_btn_pick">Підібрати екскурсію</a>
           </div>
         </div>
       </section>
@@ -178,30 +187,30 @@
               <div class="publicity-grid">
                 <div class="stat">
                   <div class="stat__num">8<span>+</span></div>
-                  <div class="stat__txt">стран</div>
+                  <div class="stat__txt" data-i18n="stat_countries">країн</div>
                 </div>
                 <div class="stat">
                   <div class="stat__num">50<span>+</span></div>
-                  <div class="stat__txt">экскурсий</div>
+                  <div class="stat__txt" data-i18n="stat_tours">екскурсій</div>
                 </div>
                 <div class="stat">
                   <div class="stat__num">25<span>+</span></div>
-                  <div class="stat__txt">маршрутов</div>
+                  <div class="stat__txt" data-i18n="stat_routes">маршрутів</div>
                 </div>
                 <div class="stat">
                   <div class="stat__num">10k<span>+</span></div>
-                  <div class="stat__txt">гостей</div>
+                  <div class="stat__txt" data-i18n="stat_guests">гостей</div>
                 </div>
               </div>
             </div>
 
             <div class="publicity-block__text">
-              <span>качество и комфорт</span>
-              <h3 class="publicity-block__title">Почему выбирают нас?</h3>
-              <p class="publicity-block__motivation">
-                У нас продуманные маршруты, небольшие группы и поддержка — просто выбираете город и дату.
+              <span data-i18n="quality_label">якість і комфорт</span>
+              <h3 class="publicity-block__title" data-i18n="why_title">Чому обирають нас?</h3>
+              <p class="publicity-block__motivation" data-i18n="why_text">
+                У нас продумані маршрути, невеликі групи та підтримка — ви просто обираєте місто й дату.
               </p>
-              <a class="btn btn--outline" href="#contacts">Написать нам</a>
+              <a class="btn btn--outline" href="#contacts" data-i18n="why_btn_write">Написати нам</a>
             </div>
           </div>
         </div>
@@ -210,7 +219,7 @@
       <!-- GALLERY -->
       <section class="style">
         <div class="style-block -container">
-          <h3 class="style-block__text">Маршруты, которые хочется фотографировать</h3>
+          <h3 class="style-block__text" data-i18n="gallery_title">Маршрути, які хочеться фотографувати</h3>
           <div class="style-block__content">
             <div><img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1400&q=80" alt="Prague"></div>
             <div><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1400&q=80" alt="Rome"></div>
@@ -226,22 +235,22 @@
       <div class="footer-block">
         <div class="footer-block__content">
           <div class="footer-block__form">
-            <h3 class="footer-block__title">Заявка на экскурсию</h3>
+            <h3 class="footer-block__title" data-i18n="form_title">Заявка на екскурсію</h3>
             <form action="#">
-              <input type="text" name="username" placeholder="имя*">
-              <input type="tel" name="tel" placeholder="телефон*">
-              <input class="footer-block__massege" type="text" name="massege" placeholder="город / дата / пожелания">
-              <button type="submit">Отправить</button>
+              <input type="text" name="username" data-i18n-placeholder="ph_name" placeholder="ім’я*">
+              <input type="tel" name="tel" data-i18n-placeholder="ph_phone" placeholder="телефон*">
+              <input class="footer-block__massege" type="text" name="massege" data-i18n-placeholder="ph_msg" placeholder="місто / дата / побажання">
+              <button type="submit" data-i18n="form_send">Надіслати</button>
             </form>
           </div>
 
           <div class="footer-block__contact">
-            <h3 class="footer-block__text">Контакты</h3>
+            <h3 class="footer-block__text" data-i18n="contacts_title">Контакти</h3>
             <a href="#" class="footer-block__adress">Amsterdam, NL</a>
             <a href="tel:+31201112233" class="footer-block__tel">+31 (0)20 111 22 33</a>
             <a href="mailto:tours@email.com" class="footer-block__mail">tours@email.com</a>
 
-            <span>соцсети</span>
+            <span data-i18n="social_label">соцмережі</span>
             <p class="footer-social">
               <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a> ·
               <a href="viber://chat?number=%2B31201112233">Viber</a> ·
@@ -263,10 +272,9 @@
       </div>
     </footer>
 
-    <button class="scroll_top" type="button" aria-label="Наверх">Top</button>
+    <button class="scroll_top" type="button" aria-label="Вгору" data-i18n-aria="top_label">Top</button>
   </div>
 
   <script src="js/script.js"></script>
 </body>
 </html>
-
