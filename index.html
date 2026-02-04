@@ -32,21 +32,28 @@
           <a class="header__number" href="tel:+31201112233">+31 (0)20 111 22 33</a>
           <a class="header__button" href="#contacts" data-i18n="cta_leave_request">Залишити заявку</a>
 
-          <!-- Language switch -->
-          <div class="lang-switch" role="group" aria-label="Language switch">
-            <button class="lang-switch__btn" type="button" data-lang="uk" aria-pressed="true">UA</button>
-            <button class="lang-switch__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+          <!-- iOS-like Language toggle -->
+          <div class="lang-toggle" aria-label="Language toggle">
+            <span class="lang-toggle__label lang-toggle__label--left is-active">UA</span>
+
+            <label class="ios-switch">
+              <input id="langToggle" class="ios-switch__input" type="checkbox" aria-label="Switch language (UA/EN)">
+              <span class="ios-switch__track" aria-hidden="true"></span>
+              <span class="ios-switch__thumb" aria-hidden="true"></span>
+            </label>
+
+            <span class="lang-toggle__label lang-toggle__label--right">EN</span>
           </div>
 
-          <!-- кликабельные соцсети -->
+          <!-- Social (links set in ONE place via JS) -->
           <div class="header__social" aria-label="Соціальні мережі">
-            <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social__btn">
+            <a href="#" data-social="instagram" target="_blank" rel="noopener" aria-label="Instagram" class="social__btn">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4a6 6 0 1 1 0 12a6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8zm6.5-.9a1.1 1.1 0 1 1 0 2.2a1.1 1.1 0 0 1 0-2.2z"/>
               </svg>
             </a>
 
-            <a href="viber://chat?number=%2B31201112233" aria-label="Viber" class="social__btn">
+            <a href="#" data-social="viber" target="_blank" rel="noopener" aria-label="Viber" class="social__btn">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M20.6 3.9C18.8 2.2 15.9 1.5 12 1.5S5.2 2.2 3.4 3.9C1.8 5.4 1.4 7.5 1.4 9.8v3.7c0 2.3.4 4.4 2 5.9 1.2 1.1 3 1.7 5.3 2l-.3 2.1c-.1.6.6 1 1.1.6l2.9-2.5c.3 0 .7 0 1.1 0 3.9 0 6.8-.7 8.6-2.4 1.6-1.5 2-3.6 2-5.9V9.8c0-2.3-.4-4.4-2-5.9zM8.4 7.5c.3-.3.9-.2 1.2.1l.8 1c.2.3.2.7 0 1l-.4.5c-.2.3-.2.7 0 1 1 1.7 2.4 3 4.1 4.1.3.2.7.2 1 0l.5-.4c.3-.2.7-.2 1 0l1 .8c.3.3.4.8.1 1.2l-.6.7c-.6.8-1.7 1.1-2.6.7-4.1-1.8-7.4-5.1-9.2-9.2-.4-.9-.1-2 .7-2.6l.7-.6z"/>
                 <path d="M14.2 6.4a.7.7 0 1 0 0 1.4c1.6 0 2.9 1.3 2.9 2.9a.7.7 0 1 0 1.4 0c0-2.4-1.9-4.3-4.3-4.3z"/>
@@ -54,14 +61,14 @@
               </svg>
             </a>
 
-            <a href="https://t.me/" target="_blank" rel="noopener" aria-label="Telegram" class="social__btn">
+            <a href="#" data-social="telegram" target="_blank" rel="noopener" aria-label="Telegram" class="social__btn">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M9.9 15.6l-.4 5.6c.6 0 .9-.3 1.3-.6l3.1-3 6.4 4.7c1.2.7 2 .3 2.3-1.1L24 2.8c.4-1.7-.6-2.4-1.7-2L1.2 9.4c-1.6.6-1.6 1.5-.3 1.9l5.6 1.7L19.7 5c.6-.4 1.1-.2.7.2L9.9 15.6z"/>
               </svg>
             </a>
           </div>
 
-          <!-- Burger button -->
+          <!-- Burger -->
           <button class="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" data-i18n-aria="burger_label">
             <span></span><span></span><span></span>
           </button>
@@ -82,17 +89,25 @@
 
           <div class="drawer__sep"></div>
 
-          <!-- Language switch inside drawer -->
-          <div class="drawer__lang lang-switch" role="group" aria-label="Language switch (mobile)">
-            <button class="lang-switch__btn" type="button" data-lang="uk" aria-pressed="true">UA</button>
-            <button class="lang-switch__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+          <!-- iOS-like Language toggle (mobile) -->
+          <div class="lang-toggle drawer__lang" aria-label="Language toggle (mobile)">
+            <span class="lang-toggle__label lang-toggle__label--left is-active">UA</span>
+
+            <label class="ios-switch">
+              <input id="langToggleMobile" class="ios-switch__input" type="checkbox" aria-label="Switch language (UA/EN)">
+              <span class="ios-switch__track" aria-hidden="true"></span>
+              <span class="ios-switch__thumb" aria-hidden="true"></span>
+            </label>
+
+            <span class="lang-toggle__label lang-toggle__label--right">EN</span>
           </div>
 
           <div class="drawer__sep"></div>
 
-          <a class="drawer__link" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
-          <a class="drawer__link" href="viber://chat?number=%2B31201112233">Viber</a>
-          <a class="drawer__link" href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+          <!-- Social -->
+          <a class="drawer__link" href="#" data-social="instagram" target="_blank" rel="noopener">Instagram</a>
+          <a class="drawer__link" href="#" data-social="viber" target="_blank" rel="noopener">Viber</a>
+          <a class="drawer__link" href="#" data-social="telegram" target="_blank" rel="noopener">Telegram</a>
         </nav>
       </div>
     </header>
@@ -124,6 +139,7 @@
             <div class="service__image">
               <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1400&q=80" alt="Europe street">
             </div>
+
             <div class="service__image">
               <img src="https://images.unsplash.com/photo-1471623432079-b009d30b6729?auto=format&fit=crop&w=1400&q=80" alt="Europe street">
             </div>
@@ -252,9 +268,9 @@
 
             <span data-i18n="social_label">соцмережі</span>
             <p class="footer-social">
-              <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a> ·
-              <a href="viber://chat?number=%2B31201112233">Viber</a> ·
-              <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+              <a href="#" data-social="instagram" target="_blank" rel="noopener">Instagram</a> ·
+              <a href="#" data-social="viber" target="_blank" rel="noopener">Viber</a> ·
+              <a href="#" data-social="telegram" target="_blank" rel="noopener">Telegram</a>
             </p>
           </div>
         </div>
@@ -265,9 +281,9 @@
           <span>Copyright 2026</span>
         </div>
         <div class="link-block__app">
-          <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
-          <a href="viber://chat?number=%2B31201112233">Viber</a>
-          <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+          <a href="#" data-social="instagram" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" data-social="viber" target="_blank" rel="noopener">Viber</a>
+          <a href="#" data-social="telegram" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
     </footer>
