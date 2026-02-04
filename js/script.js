@@ -1,5 +1,5 @@
 // ===================================
-// 1) Social links (ONE PLACE SETTINGS)
+// Social links (ONE PLACE SETTINGS)
 // ===================================
 const SOCIAL = {
   instagram: "https://instagram.com/",
@@ -18,7 +18,7 @@ function applySocialLinks() {
 }
 
 // ==========================
-// 2) Burger + Drawer behavior
+// Burger + Drawer behavior
 // ==========================
 function setupDrawer() {
   const burger = document.querySelector(".burger");
@@ -60,7 +60,7 @@ function setupDrawer() {
 }
 
 // =========================
-// 3) Scroll top button
+// Scroll top button
 // =========================
 function setupScrollTop() {
   const btn = document.querySelector(".scroll_top");
@@ -79,7 +79,7 @@ function setupScrollTop() {
 }
 
 // =========================
-// 4) Smooth anchors
+// Smooth anchors
 // =========================
 function setupSmoothAnchors() {
   document.addEventListener("click", (e) => {
@@ -98,7 +98,7 @@ function setupSmoothAnchors() {
 }
 
 // =========================
-// 5) Language switch (UA / EN) + iOS toggle
+// Language switch (UA / EN)
 // =========================
 (function () {
   const dict = {
@@ -233,20 +233,11 @@ function setupSmoothAnchors() {
     return "uk";
   }
 
-  function updateToggleUI(activeLang){
-    const toggle = document.getElementById("langToggle");
-    const toggleM = document.getElementById("langToggleMobile");
-    const isEn = activeLang === "en";
-
-    if (toggle) toggle.checked = isEn;
-    if (toggleM) toggleM.checked = isEn;
-
-    document.querySelectorAll(".lang-toggle").forEach((wrap) => {
-      const left = wrap.querySelector(".lang-toggle__label--left");
-      const right = wrap.querySelector(".lang-toggle__label--right");
-      if (!left || !right) return;
-      left.classList.toggle("is-active", !isEn);
-      right.classList.toggle("is-active", isEn);
+  function setLangButtons(activeLang) {
+    document.querySelectorAll(".lang-switch__btn").forEach((btn) => {
+      const isActive = normalizeLang(btn.dataset.lang) === activeLang;
+      btn.classList.toggle("is-active", isActive);
+      btn.setAttribute("aria-pressed", isActive ? "true" : "false");
     });
   }
 
@@ -279,27 +270,21 @@ function setupSmoothAnchors() {
     });
 
     localStorage.setItem(STORAGE_KEY, lang);
-    updateToggleUI(lang);
+    setLangButtons(lang);
   }
 
   function initLang() {
     const saved = localStorage.getItem(STORAGE_KEY);
     const browserLang = navigator.language || navigator.userLanguage;
     const initial = normalizeLang(saved || browserLang || "uk");
-
     applyLang(initial);
 
-    const bind = (id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.addEventListener("change", () => {
-        const lang = el.checked ? "en" : "uk";
+    document.querySelectorAll(".lang-switch__btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const lang = normalizeLang(btn.dataset.lang);
         applyLang(lang);
       });
-    };
-
-    bind("langToggle");
-    bind("langToggleMobile");
+    });
   }
 
   document.addEventListener("DOMContentLoaded", initLang);
