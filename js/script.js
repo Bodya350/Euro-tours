@@ -4,7 +4,7 @@
 const SOCIAL = {
   instagram: "https://instagram.com/",
   viber: "https://invite.viber.com/?g2=AQB0%2BswPaAUv8FGGundTQ%2FonyDG%2FWH0HN6BFQ%2BkD8e2obqhvXnbAVZSzueI4%2FLEL",
-  telegram: "https://t.me/"
+  telegram: "https://t.me/traveltournetherlands"
 };
 
 function applySocialLinks() {
