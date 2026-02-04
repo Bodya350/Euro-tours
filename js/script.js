@@ -1,57 +1,104 @@
-(() => {
-  const body = document.body;
+// ===================================
+// 1) Social links (ONE PLACE SETTINGS)
+// ===================================
+const SOCIAL = {
+  instagram: "https://instagram.com/",
+  viber: "https://invite.viber.com/?g2=AQB0%2BswPaAUv8FGGundTQ%2FonyDG%2FWH0HN6BFQ%2BkD8e2obqhvXnbAVZSzueI4%2FLEL",
+  telegram: "https://t.me/"
+};
+
+function applySocialLinks() {
+  document.querySelectorAll("[data-social]").forEach((a) => {
+    const key = a.getAttribute("data-social");
+    if (!key || !SOCIAL[key]) return;
+    a.setAttribute("href", SOCIAL[key]);
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "noopener");
+  });
+}
+
+// ==========================
+// 2) Burger + Drawer behavior
+// ==========================
+function setupDrawer() {
   const burger = document.querySelector(".burger");
   const drawer = document.querySelector(".drawer");
-  const drawerLinks = document.querySelectorAll(".drawer__link, .drawer__cta");
-  const topBtn = document.querySelector(".scroll_top");
+  const drawerNav = document.querySelector(".drawer__nav");
 
-  function openMenu() {
-    drawer.classList.add("open");
+  if (!burger || !drawer || !drawerNav) return;
+
+  const open = () => {
+    document.body.classList.add("drawer-open");
     burger.setAttribute("aria-expanded", "true");
     drawer.setAttribute("aria-hidden", "false");
-    body.classList.add("lock");
-  }
+  };
 
-  function closeMenu() {
-    drawer.classList.remove("open");
+  const close = () => {
+    document.body.classList.remove("drawer-open");
     burger.setAttribute("aria-expanded", "false");
     drawer.setAttribute("aria-hidden", "true");
-    body.classList.remove("lock");
-  }
+  };
 
-  // burger toggle
   burger.addEventListener("click", () => {
-    drawer.classList.contains("open") ? closeMenu() : openMenu();
+    if (document.body.classList.contains("drawer-open")) close();
+    else open();
   });
 
-  // click outside closes
   drawer.addEventListener("click", (e) => {
-    if (e.target === drawer) closeMenu();
+    if (!drawerNav.contains(e.target)) close();
   });
 
-  // any link closes
-  drawerLinks.forEach((a) => a.addEventListener("click", () => closeMenu()));
+  drawerNav.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a) return;
+    close();
+  });
 
-  // ESC closes
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && drawer.classList.contains("open")) closeMenu();
+    if (e.key === "Escape") close();
   });
-
-  // Scroll to top button
-  function updateTopBtn() {
-    if (window.scrollY > 400) topBtn.classList.add("show");
-    else topBtn.classList.remove("show");
-  }
-  updateTopBtn();
-  window.addEventListener("scroll", updateTopBtn, { passive: true });
-
-  topBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-})();
+}
 
 // =========================
-// Language switch (UA / EN)
+// 3) Scroll top button
+// =========================
+function setupScrollTop() {
+  const btn = document.querySelector(".scroll_top");
+  if (!btn) return;
+
+  const toggle = () => {
+    btn.style.display = window.scrollY > 500 ? "block" : "none";
+  };
+
+  window.addEventListener("scroll", toggle);
+  toggle();
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// =========================
+// 4) Smooth anchors
+// =========================
+function setupSmoothAnchors() {
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+
+    const id = a.getAttribute("href");
+    if (!id || id === "#") return;
+
+    const el = document.querySelector(id);
+    if (!el) return;
+
+    e.preventDefault();
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
+// =========================
+// 5) Language switch (UA / EN) + iOS toggle
 // =========================
 (function () {
   const dict = {
@@ -186,43 +233,45 @@
     return "uk";
   }
 
-  function setPressedButtons(activeLang) {
-    document.querySelectorAll(".lang-switch__btn").forEach((btn) => {
-      const isActive = btn.dataset.lang === activeLang;
-      btn.setAttribute("aria-pressed", isActive ? "true" : "false");
-      btn.classList.toggle("is-active", isActive);
+  function updateToggleUI(activeLang){
+    const toggle = document.getElementById("langToggle");
+    const toggleM = document.getElementById("langToggleMobile");
+    const isEn = activeLang === "en";
+
+    if (toggle) toggle.checked = isEn;
+    if (toggleM) toggleM.checked = isEn;
+
+    document.querySelectorAll(".lang-toggle").forEach((wrap) => {
+      const left = wrap.querySelector(".lang-toggle__label--left");
+      const right = wrap.querySelector(".lang-toggle__label--right");
+      if (!left || !right) return;
+      left.classList.toggle("is-active", !isEn);
+      right.classList.toggle("is-active", isEn);
     });
   }
 
   function applyLang(lang) {
     const pack = dict[lang] || dict.uk;
 
-    // html lang
     document.documentElement.setAttribute("lang", lang === "en" ? "en" : "uk");
 
-    // title
     const titleEl = document.querySelector("title[data-i18n]");
     if (titleEl) titleEl.textContent = pack.meta_title;
     else document.title = pack.meta_title;
 
-    // text/HTML nodes
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (!key || pack[key] == null) return;
-
-      // для рядків з <span>... (ціни) — використовуємо innerHTML
       if (String(pack[key]).includes("<")) el.innerHTML = pack[key];
       else el.textContent = pack[key];
     });
 
-    // placeholders
     document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
       const key = el.getAttribute("data-i18n-placeholder");
       if (!key || pack[key] == null) return;
       el.setAttribute("placeholder", pack[key]);
     });
 
-    // aria-label
     document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
       const key = el.getAttribute("data-i18n-aria");
       if (!key || pack[key] == null) return;
@@ -230,26 +279,38 @@
     });
 
     localStorage.setItem(STORAGE_KEY, lang);
-    setPressedButtons(lang);
+    updateToggleUI(lang);
   }
 
   function initLang() {
     const saved = localStorage.getItem(STORAGE_KEY);
-
-    // Якщо хочеш авто-вибір за мовою браузера — залиш це:
     const browserLang = navigator.language || navigator.userLanguage;
-
     const initial = normalizeLang(saved || browserLang || "uk");
+
     applyLang(initial);
 
-    document.querySelectorAll(".lang-switch__btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const lang = normalizeLang(btn.dataset.lang);
+    const bind = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener("change", () => {
+        const lang = el.checked ? "en" : "uk";
         applyLang(lang);
       });
-    });
+    };
+
+    bind("langToggle");
+    bind("langToggleMobile");
   }
 
   document.addEventListener("DOMContentLoaded", initLang);
 })();
 
+// =========================
+// Init all
+// =========================
+document.addEventListener("DOMContentLoaded", () => {
+  applySocialLinks();
+  setupDrawer();
+  setupScrollTop();
+  setupSmoothAnchors();
+});
