@@ -1071,4 +1071,40 @@ button{cursor:pointer;font-family:inherit}
 }
 
 /* ================= END BURGER ================= */
+/* ===== Language Switch ===== */
+.lang-switch{
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.lang-switch__btn{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.25);
+  color: inherit;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.lang-switch__btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.45);
+}
+
+.lang-switch__btn.is-active{
+  background: rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.65);
+}
+
+/* щоб у мобільному drawer було рівно */
+.drawer__lang{
+  padding: 10px 0;
+}
 
