@@ -32,17 +32,11 @@
           <a class="header__number" href="tel:+31201112233">+31 (0)20 111 22 33</a>
           <a class="header__button" href="#contacts" data-i18n="cta_leave_request">Залишити заявку</a>
 
-          <!-- iOS-like Language toggle -->
-          <div class="lang-toggle" aria-label="Language toggle">
-            <span class="lang-toggle__label lang-toggle__label--left is-active">UA</span>
-
-            <label class="ios-switch">
-              <input id="langToggle" class="ios-switch__input" type="checkbox" aria-label="Switch language (UA/EN)">
-              <span class="ios-switch__track" aria-hidden="true"></span>
-              <span class="ios-switch__thumb" aria-hidden="true"></span>
-            </label>
-
-            <span class="lang-toggle__label lang-toggle__label--right">EN</span>
+          <!-- Language switch (simple: UA | EN) -->
+          <div class="lang-switch" aria-label="Language switch">
+            <button class="lang-switch__btn is-active" type="button" data-lang="uk" aria-pressed="true">UA</button>
+            <span class="lang-switch__sep">|</span>
+            <button class="lang-switch__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
           </div>
 
           <!-- Social (links set in ONE place via JS) -->
@@ -89,17 +83,11 @@
 
           <div class="drawer__sep"></div>
 
-          <!-- iOS-like Language toggle (mobile) -->
-          <div class="lang-toggle drawer__lang" aria-label="Language toggle (mobile)">
-            <span class="lang-toggle__label lang-toggle__label--left is-active">UA</span>
-
-            <label class="ios-switch">
-              <input id="langToggleMobile" class="ios-switch__input" type="checkbox" aria-label="Switch language (UA/EN)">
-              <span class="ios-switch__track" aria-hidden="true"></span>
-              <span class="ios-switch__thumb" aria-hidden="true"></span>
-            </label>
-
-            <span class="lang-toggle__label lang-toggle__label--right">EN</span>
+          <!-- Language switch (mobile) -->
+          <div class="lang-switch drawer__lang" aria-label="Language switch (mobile)">
+            <button class="lang-switch__btn is-active" type="button" data-lang="uk" aria-pressed="true">UA</button>
+            <span class="lang-switch__sep">|</span>
+            <button class="lang-switch__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
           </div>
 
           <div class="drawer__sep"></div>
